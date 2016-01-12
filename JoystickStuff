@@ -1,4 +1,43 @@
-testMotor.set(joystick.getY() * ((joystick.getThrottle() + -1) / 2));
+package org.usfirst.frc.team5026.robot;
+
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class Robot extends IterativeRobot {
+	
+	public Joystick joystick;
+	public Talon testMotor;
+	//public RobotDrive robotDrive;
+	public DoubleSolenoid doubleSolenoid;
+	
+	public void robotInit(){
+		//robotDrive = new RobotDrive(0,1,2,3);
+		testMotor = new Talon(1);
+		joystick = new Joystick(0);
+		
+		doubleSolenoid = new DoubleSolenoid(2,3);
+		//LiveWindow.addActuator("SubSystem", "Solenoid", doubleSolenoid);
+	}
+	public void autonomousInit(){}
+	public void autonomousPeriodic(){}
+	public void teleopInit(){
+ 
+	}
+	public double JOYSTICK_SENSITIVITY = 1;
+	
+	public void teleopPeriodic(){
+		
+		SmartDashboard.putNumber("Joystick X", joystick.getX());
+		SmartDashboard.putNumber("Joystick Y", joystick.getY());
+		SmartDashboard.putNumber("Joystick Z", joystick.getZ());
+		SmartDashboard.putNumber("Throttle", (((joystick.getThrottle() * -1) +1) / 2));
+		SmartDashboard.putBoolean("Trigger", joystick.getTrigger());
+		
+		testMotor.set(joystick.getY() * ((joystick.getThrottle() + -1) / 2));
 		//robotDrive.arcadeDrive(Math.sqrt(JOYSTICK_SENSITIVITY)*joystick.getY(), Math.sqrt(JOYSTICK_SENSITIVITY)*-joystick.getX(), true);
 
 		JOYSTICK_SENSITIVITY = (((joystick.getThrottle() * -1) + 1) / 2); 
@@ -15,3 +54,35 @@ testMotor.set(joystick.getY() * ((joystick.getThrottle() + -1) / 2));
 		if(joystick.getRawButton(2)) {
 			doubleSolenoid.set(DoubleSolenoid.Value.kOff);
 		}
+		/*if(-0.1 < joystick.getY() && joystick.getY() < 0.1 && -0.1 < joystick.getX() && joystick.getX() < 0.1){
+			robotDrive.set(0);
+		}*/
+		
+		/*boolean slowbuttonValue = joystickR.getRawButton(5);
+		boolean midbuttonValue = joystickR.getRawButton(3);
+		boolean fasterbuttonValue = joystickR.getRawButton(4);
+		boolean fastestbuttonValue = joystickR.getRawButton(6);
+		
+		if(slowbuttonValue) {
+			JOYSTICK_SENSITIVITY = 0.25;
+		}
+		
+		if(midbuttonValue) {
+			JOYSTICK_SENSITIVITY = 0.5;
+		}
+		
+		if(fasterbuttonValue) {
+			JOYSTICK_SENSITIVITY = 0.75;
+		}
+		
+		if(fastestbuttonValue) {
+			JOYSTICK_SENSITIVITY = 1;
+		}
+		//System.out.printf(", args)
+		System.out.println("JoystickR 5 Value:" + joystickR.getRawButton(5));
+		System.out.println("JoystickL Throttle Value: " + joystickL.getZ());*/
+		System.out.println("JoystickR Throttle Value: " + joystick.getThrottle());
+		System.out.println("");
+	}
+	
+}
