@@ -1,0 +1,17 @@
+testMotor.set(joystick.getY() * ((joystick.getThrottle() + -1) / 2));
+		//robotDrive.arcadeDrive(Math.sqrt(JOYSTICK_SENSITIVITY)*joystick.getY(), Math.sqrt(JOYSTICK_SENSITIVITY)*-joystick.getX(), true);
+
+		JOYSTICK_SENSITIVITY = (((joystick.getThrottle() * -1) + 1) / 2); 
+		if(joystick.getTrigger()) {
+			
+			JOYSTICK_SENSITIVITY = 0;
+		}
+		if(joystick.getRawButton(3)) {
+			doubleSolenoid.set(DoubleSolenoid.Value.kForward);
+		}
+		if(joystick.getRawButton(4)) {
+			doubleSolenoid.set(DoubleSolenoid.Value.kReverse);
+		}
+		if(joystick.getRawButton(2)) {
+			doubleSolenoid.set(DoubleSolenoid.Value.kOff);
+		}
