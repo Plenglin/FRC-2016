@@ -4,29 +4,32 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
+import org.usfirst.frc.team5026.robot.Hardware;
+
 public class Shifter extends Subsystem {
     
-	DoubleSolenoid leftShiftSolenoid = new DoubleSolenoid(0, 1);
-	DoubleSolenoid rightShiftSolenoid = new DoubleSolenoid(2, 3);
+	DoubleSolenoid leftSolenoid;
+	DoubleSolenoid rightSolenoid;
 	
 	boolean isHigh;
 	
 	public Shifter(boolean highShift) {
+		leftSolenoid = Hardware.leftShiftSolenoid;
+		rightSolenoid = Hardware.rightShiftSolenoid;
+		
 		setShift(highShift);
 	}
 	
-    public void initDefaultCommand() {}
-    
     public void setShift(boolean highShift) {
     	if(highShift) {
-    		leftShiftSolenoid.set(Value.kForward);
-    		rightShiftSolenoid.set(Value.kForward);
+    		leftSolenoid.set(Value.kForward);
+    		rightSolenoid.set(Value.kForward);
     		isHigh = true;
     	}
     	
     	else {
-    		leftShiftSolenoid.set(Value.kReverse);
-    		rightShiftSolenoid.set(Value.kReverse);
+    		leftSolenoid.set(Value.kReverse);
+    		rightSolenoid.set(Value.kReverse);
     		isHigh = false;
     	}
     }
@@ -34,5 +37,7 @@ public class Shifter extends Subsystem {
     public void toggleShift() {
     	setShift(!isHigh);
     }
-}
+    
+    public void initDefaultCommand() {}
 
+}
