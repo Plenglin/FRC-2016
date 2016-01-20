@@ -32,12 +32,12 @@ public class Constants {
 	public static final int kLidarChannel = 1;
 	
 	// Shooter
-	public static final int kLeftShooterChannel = 8;
-	public static final int kRightShooterChannel = 9;
-	public static final int kLeftEncoderAChannel = 10;
-	public static final int kLeftEncoderBChannel = 11;
-	public static final int kRightEncoderAChannel = 12;
-	public static final int kRightEncoderBChannel = 13;
+	public static final int kLeftShooterChannel = 8; // SRX
+	public static final int kRightShooterChannel = 9; // SRX
+	public static final int kLeftEncoderAChannel = 0;
+	public static final int kLeftEncoderBChannel = 1;
+	public static final int kRightEncoderAChannel = 2;
+	public static final int kRightEncoderBChannel = 3;
 	public static final double kShooterEncoderPPR = 256; // PPR = pulses per rotation
 	
 	// Math Constants

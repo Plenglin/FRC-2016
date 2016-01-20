@@ -23,7 +23,7 @@ public class Shooter extends Subsystem {
 				Constants.kShooterP, Constants.kShooterI, Constants.kShooterD, 
 				Hardware.rightShooterEncoder, Hardware.rightShooterMotor
 		);
-		Hardware.leftShooterEncoder.setDistancePerPulse(1/Constants.kShooterEncoderPPR);
+		Hardware.leftShooterEncoder.setDistancePerPulse(1/Constants.kShooterEncoderPPR); // Fix math
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class Shooter extends Subsystem {
 	 * Get the left motor's target speed
 	 * @return
 	 */
-	public double getLeftSpeed() {
+	public double getTargetLeftSpeed() {
 		return left.getSetpoint();
 	}
 	
@@ -72,7 +72,7 @@ public class Shooter extends Subsystem {
 	 * Get the right motor's target speed
 	 * @return
 	 */
-	public double getRightSpeed() {
+	public double getTargetRightSpeed() {
 		return right.getSetpoint();
 	}
 
