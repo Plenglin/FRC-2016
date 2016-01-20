@@ -31,6 +31,15 @@ public class Constants {
 	// DIO
 	public static final int kLidarChannel = 1;
 	
+	// Shooter
+	public static final int kLeftShooterChannel = 8;
+	public static final int kRightShooterChannel = 9;
+	public static final int kLeftEncoderAChannel = 10;
+	public static final int kLeftEncoderBChannel = 11;
+	public static final int kRightEncoderAChannel = 12;
+	public static final int kRightEncoderBChannel = 13;
+	public static final double kShooterEncoderPPR = 256; // PPR = pulses per rotation
+	
 	// Math Constants
 	public static final int kWheelRadius = 6; //inches
 	public static final int kEncoderCPR = 256;
@@ -42,4 +51,5 @@ public class Constants {
 	public static final double kShooterP = 0;
 	public static final double kShooterI = 0;
 	public static final double kShooterD = 0;
+
 }
